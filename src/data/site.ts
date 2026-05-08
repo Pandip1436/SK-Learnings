@@ -1,8 +1,8 @@
 export const site = {
-  name: "SK Learnings",
+  name: "THE SK LEARNINGS",
   tagline: "Where serious students become future doctors and engineers.",
   location: "Madurai, Tamil Nadu",
-  established: 2014,
+  established: 2017,
   successRate: 84,
   yearsOfExcellence: 10,
   contact: {
@@ -15,6 +15,11 @@ export const site = {
     mapEmbed:
       "https://maps.google.com/maps?q=The%20SK%20Learnings%20Anna%20Main%20Street%20Madurai&t=&z=16&ie=UTF8&iwloc=&output=embed",
   },
+  socials: {
+    instagram: "https://www.instagram.com/the_sk_learnings/",
+    facebook: "https://share.google/0ENWbpjMZBEVm2EJS",
+    youtube: "https://www.youtube.com/channel/UCo358by77FS2t7mJZRN4MWA",
+  },
 } as const;
 
 // Replace these with the YouTube video IDs from your channel.
@@ -22,9 +27,9 @@ export const site = {
 // Default value below is the public YouTube IFrame API sample so the player
 // works out of the box; swap in your real videos when ready.
 export const videos = {
-  intro: "M7lc1UVf-VE",
-  crack: "M7lc1UVf-VE",
-  related: "M7lc1UVf-VE",
+  intro: "vZjn-1r6TBw",
+  crack: "Mhbc2qL_fQY",
+  related: "vZjn-1r6TBw",
 } as const;
 
 export const navLinks = [

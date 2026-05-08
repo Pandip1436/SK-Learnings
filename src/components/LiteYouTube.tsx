@@ -29,7 +29,7 @@ export function LiteYouTube({ videoId, title, className = "" }: Props) {
       type="button"
       onClick={() => setActivated(true)}
       aria-label={`Play: ${title}`}
-      className={`group relative block w-full cursor-pointer overflow-hidden ${className}`}
+      className={`group relative block w-full cursor-pointer overflow-hidden bg-black ${className}`}
     >
       <img
         src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
@@ -41,23 +41,58 @@ export function LiteYouTube({ videoId, title, className = "" }: Props) {
         `}
         alt={title}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500"
       />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/30" />
-      <span className="absolute inset-0 grid place-items-center">
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-[#FF0000] text-white shadow-2xl shadow-black/60 transition group-hover:scale-110 sm:h-20 sm:w-20">
+      
+      {/* Title Bar Gradient (Top) */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/80 to-transparent pointer-events-none" />
+      
+      {/* Bottom Bar Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+
+      {/* Title */}
+      <div className="absolute top-0 left-0 right-0 p-4 flex items-center gap-3">
+        <div className="h-10 w-10 shrink-0 rounded-full bg-[#0f0f0f] border border-white/10 overflow-hidden flex items-center justify-center">
+          <span className="text-white text-xs font-bold">SK</span>
+        </div>
+        <p className="text-white text-base font-medium truncate text-left drop-shadow-md">
+          {title}
+        </p>
+      </div>
+
+      {/* Play Button Center */}
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="w-[68px] h-[48px] rounded-[14px] bg-[#FF0000] text-white flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-105 group-active:scale-95">
           <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="currentColor"
             aria-hidden
-            className="translate-x-[2px] sm:translate-x-[3px]"
           >
             <path d="M8 5v14l11-7z" />
           </svg>
-        </span>
-      </span>
+        </div>
+      </div>
+
+      {/* Watch on YouTube Bar */}
+      <div className="absolute bottom-0 left-0 p-3 z-10 w-full flex items-center">
+        <a 
+          href={`https://www.youtube.com/watch?v=${videoId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="inline-flex items-center gap-2 bg-[#121212]/90 hover:bg-[#282828] transition-colors border border-white/10 rounded-md px-3 py-1.5 shadow-lg"
+        >
+          <span className="text-white text-[11px] font-semibold tracking-wide opacity-90 uppercase">Watch on</span>
+          <div className="flex items-center gap-1">
+            <svg width="18" height="13" viewBox="0 0 24 24" fill="#FF0000">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span className="text-white text-[14px] font-bold tracking-tighter">YouTube</span>
+          </div>
+        </a>
+      </div>
     </button>
   );
 }

@@ -2,35 +2,48 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { site } from "../data/site";
 import { PremiumIcon } from "../components/PremiumIcon";
+import { Reveal } from "../components/Reveal";
 
 type Status = "idle" | "sending" | "sent";
 
 export function Contact() {
   return (
-    <>
+    <div className="relative overflow-hidden selection:bg-cyan-500/30">
+      {/* Background elements */}
+      <div className="pointer-events-none absolute inset-0 -z-50 bg-linear-to-b from-[#020617] via-[#070321] to-[#0a0820]" />
+      <div className="pointer-events-none absolute inset-0 -z-40 bg-grid-cyan opacity-[0.15] mask-fade-radial" />
+      
+      {/* Glow Orbs */}
+      <div aria-hidden className="pointer-events-none absolute left-0 top-1/4 -z-10 h-[600px] w-[600px] -translate-x-1/3 -translate-y-1/2 rounded-full bg-cyan-600/20 blur-[120px]" />
+
       <Header />
       <Map />
       <DetailsAndForm />
       <CategoryCards />
       <ClosingCallout />
-    </>
+    </div>
   );
 }
 
 function Header() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pt-20 pb-12 text-center lg:px-10 lg:pt-28">
-      <p className="font-display text-xs uppercase tracking-[0.22em] text-gold-300">
-        Get in touch
-      </p>
-      <h1 className="mt-4 font-display text-5xl font-semibold leading-[1.05] text-parchment sm:text-6xl lg:text-7xl">
-        Reach us here.
-      </h1>
-      <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-parchment/70">
-        Thank you for your interest in SK Learnings. We are eager to assist
-        you on your educational journey and welcome any inquiries or
-        feedback. Reach out through any of the channels below.
-      </p>
+    <section className="mx-auto max-w-7xl px-6 pt-32 pb-12 text-center lg:px-10 lg:pt-48">
+      <Reveal>
+        <p className="inline-flex items-center gap-2.5 rounded-full border border-cyan-400/30 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.32em] text-cyan-200 backdrop-blur">
+          Get in touch
+        </p>
+      </Reveal>
+      <Reveal delay={100}>
+        <h1 className="mt-8 font-display text-5xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+          Reach us <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-300 via-sky-300 to-violet-400 drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">here.</span>
+        </h1>
+      </Reveal>
+      <Reveal delay={200}>
+        <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-parchment/70">
+          Thank you for your interest in SK Learnings. We are eager to assist
+          you on your educational journey. Reach out through any of the channels below.
+        </p>
+      </Reveal>
     </section>
   );
 }
@@ -38,17 +51,21 @@ function Header() {
 function Map() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-10">
-      <div className="overflow-hidden rounded-3xl border border-navy-900/10 shadow-xl shadow-navy-900/5">
-        <iframe
-          title="SK Learnings — location"
-          src={site.contact.mapEmbed}
-          width="100%"
-          height="460"
-          style={{ border: 0 }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
+      <Reveal>
+        <div className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-[#0c1226]/80 p-2 backdrop-blur-xl">
+          <div className="overflow-hidden rounded-[1.25rem]">
+            <iframe
+              title="SK Learnings — location"
+              src={site.contact.mapEmbed}
+              width="100%"
+              height="460"
+              style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) contrast(100%)' }} // CSS trick to make the map dark theme matching
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -57,42 +74,59 @@ function DetailsAndForm() {
   return (
     <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-10">
       <div className="grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <DetailBlock title="Institute Address">
-            <ul className="space-y-5 text-base leading-relaxed text-parchment/80">
-              {site.contact.addresses.map((a, i) => (
-                <li key={i}>{a}</li>
-              ))}
-            </ul>
-          </DetailBlock>
-
-          <DetailBlock title="Digital Address">
-            <a
-              href={`mailto:${site.contact.email}`}
-              className="text-base text-parchment hover:text-gold-300"
+        <div className="lg:col-span-5 flex flex-col justify-center">
+          <Reveal>
+            <DetailBlock 
+              title="Institute Address"
+              icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>}
             >
-              {site.contact.email}
-            </a>
-          </DetailBlock>
+              <ul className="space-y-3 text-[15px] leading-relaxed text-parchment/80">
+                {site.contact.addresses.map((a, i) => (
+                  <li key={i}>{a}</li>
+                ))}
+              </ul>
+            </DetailBlock>
+          </Reveal>
 
-          <DetailBlock title="Phone">
-            <ul className="space-y-2 text-base">
-              {site.contact.phones.map((p) => (
-                <li key={p}>
-                  <a
-                    href={`tel:${p.replace(/\s/g, "")}`}
-                    className="text-parchment hover:text-gold-300"
-                  >
-                    {p}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </DetailBlock>
+          <Reveal delay={100}>
+            <DetailBlock 
+              title="Digital Address"
+              icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
+            >
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="text-[15px] font-medium text-cyan-300 transition hover:text-cyan-100 hover:underline"
+              >
+                {site.contact.email}
+              </a>
+            </DetailBlock>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <DetailBlock 
+              title="Phone"
+              icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>}
+            >
+              <ul className="space-y-3 text-[15px] font-medium">
+                {site.contact.phones.map((p) => (
+                  <li key={p}>
+                    <a
+                      href={`tel:${p.replace(/\s/g, "")}`}
+                      className="text-white transition hover:text-cyan-200"
+                    >
+                      {p}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </DetailBlock>
+          </Reveal>
         </div>
 
         <div className="lg:col-span-7">
-          <ContactForm />
+          <Reveal delay={300}>
+            <ContactForm />
+          </Reveal>
         </div>
       </div>
     </section>
@@ -101,32 +135,39 @@ function DetailsAndForm() {
 
 function DetailBlock({
   title,
+  icon,
   children,
 }: {
   title: string;
+  icon?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <div className="mb-9">
-      <p className="font-display text-xs uppercase tracking-[0.22em] text-gold-300">
-        {title}
-      </p>
-      <div className="mt-3">{children}</div>
+    <div className="group relative mb-8 overflow-hidden rounded-3xl border border-white/5 bg-[#0c1226]/40 p-6 backdrop-blur-md transition-colors hover:bg-[#0c1226]/80 hover:border-cyan-500/30">
+      <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-cyan-500/0 blur-[40px] transition-colors group-hover:bg-cyan-500/10" />
+      <div className="relative z-10 flex items-start gap-4">
+        {icon && (
+          <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#07050f] text-cyan-400 ring-1 ring-cyan-500/20 shadow-[0_0_15px_rgba(34,211,238,0.1)] group-hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-shadow">
+            {icon}
+          </div>
+        )}
+        <div>
+          <p className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-violet-300">
+            {title}
+          </p>
+          <div className="mt-4">{children}</div>
+        </div>
+      </div>
     </div>
   );
 }
 
 function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const [captcha, setCaptcha] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (captcha.trim() !== "13") {
-      setError("That doesn't look right — 15 − 2 should equal 13.");
-      return;
-    }
     setError(null);
     setStatus("sending");
     setTimeout(() => setStatus("sent"), 700);
@@ -135,16 +176,18 @@ function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="glow-border glow-border-gold relative rounded-3xl border border-navy-900/10 bg-parchment-warm p-8 sm:p-10"
+      className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl sm:p-10 lift"
     >
-      <p className="font-display text-xs uppercase tracking-[0.22em] text-gold-600">
+      <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]" />
+      
+      <p className="font-display text-xs uppercase tracking-[0.22em] text-violet-300 relative">
         Send us a message
       </p>
-      <h2 className="mt-2 font-display text-2xl font-semibold text-navy-900 sm:text-3xl">
+      <h2 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl relative">
         Tell us a little about the student.
       </h2>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 relative">
         <Field label="Name" name="name" required />
         <Field label="Email Address" name="email" type="email" required />
         <Textarea
@@ -155,28 +198,16 @@ function ContactForm() {
         />
       </div>
 
-      <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
-        <label className="flex items-center gap-3">
-          <span className="font-display text-sm text-navy-900">15 − 2 =</span>
-          <input
-            value={captcha}
-            onChange={(e) => setCaptcha(e.target.value)}
-            inputMode="numeric"
-            required
-            aria-label="Captcha — fifteen minus two"
-            className="w-20 rounded-xl border border-navy-900/15 bg-parchment px-3 py-2 text-center text-navy-900 outline-none transition focus:border-navy-900 focus:ring-2 focus:ring-gold-300/60"
-          />
-        </label>
-
+      <div className="mt-8 flex flex-wrap items-end justify-end gap-6 relative">
         <button
           type="submit"
           disabled={status !== "idle"}
-          className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-7 py-3.5 text-base font-medium text-parchment transition hover:bg-navy-700 disabled:opacity-60"
+          className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-3.5 text-base font-semibold text-white shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)] transition hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(34,211,238,0.6)] disabled:opacity-60 disabled:hover:scale-100"
         >
           {status === "idle" && (
             <>
               Submit
-              <span aria-hidden>→</span>
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
             </>
           )}
           {status === "sending" && "Sending…"}
@@ -185,7 +216,9 @@ function ContactForm() {
       </div>
 
       {error && (
-        <p className="mt-4 text-sm text-red-700">{error}</p>
+        <p className="mt-6 rounded-lg bg-red-500/10 p-3 text-sm font-medium text-red-400 border border-red-500/20 relative">
+          {error}
+        </p>
       )}
     </form>
   );
@@ -202,17 +235,24 @@ type FieldProps = {
 
 function Field({ label, name, type = "text", required, wide, placeholder }: FieldProps) {
   return (
-    <label className={`flex flex-col gap-2 ${wide ? "sm:col-span-2" : ""}`}>
-      <span className="font-display text-xs uppercase tracking-[0.18em] text-ink-soft">
+    <label className={`group relative flex flex-col gap-2 ${wide ? "sm:col-span-2" : ""}`}>
+      <span className="font-display text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/50 transition-colors group-focus-within:text-cyan-300">
         {label}
       </span>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        className="rounded-xl border border-navy-900/15 bg-parchment px-4 py-3 text-navy-900 outline-none transition focus:border-navy-900 focus:ring-2 focus:ring-gold-300/60"
-      />
+      <div className="relative">
+        <input
+          name={name}
+          type={type}
+          required={required}
+          placeholder={placeholder}
+          className="peer w-full rounded-2xl border border-white/5 bg-[#07050f]/60 px-5 py-4 text-white outline-none transition-all placeholder:text-transparent focus:border-cyan-500/50 focus:bg-[#07050f]/90 focus:ring-4 focus:ring-cyan-500/10"
+        />
+        {placeholder && (
+          <span className="pointer-events-none absolute left-5 top-4 text-white/30 transition-all peer-focus:-translate-y-2 peer-focus:text-xs peer-focus:opacity-0 peer-valid:-translate-y-2 peer-valid:text-xs peer-valid:opacity-0">
+            {placeholder}
+          </span>
+        )}
+      </div>
     </label>
   );
 }
@@ -229,16 +269,24 @@ function Textarea({
   wide?: boolean;
 }) {
   return (
-    <label className={`flex flex-col gap-2 ${wide ? "sm:col-span-2" : ""}`}>
-      <span className="font-display text-xs uppercase tracking-[0.18em] text-ink-soft">
+    <label className={`group relative flex flex-col gap-2 ${wide ? "sm:col-span-2" : ""}`}>
+      <span className="font-display text-xs font-medium uppercase tracking-[0.18em] text-cyan-200/50 transition-colors group-focus-within:text-cyan-300">
         {label}
       </span>
-      <textarea
-        name={name}
-        rows={5}
-        placeholder={placeholder}
-        className="rounded-xl border border-navy-900/15 bg-parchment px-4 py-3 text-navy-900 outline-none transition focus:border-navy-900 focus:ring-2 focus:ring-gold-300/60"
-      />
+      <div className="relative">
+        <textarea
+          name={name}
+          rows={4}
+          required
+          placeholder={placeholder}
+          className="peer w-full resize-none rounded-2xl border border-white/5 bg-[#07050f]/60 px-5 py-4 text-white outline-none transition-all placeholder:text-transparent focus:border-cyan-500/50 focus:bg-[#07050f]/90 focus:ring-4 focus:ring-cyan-500/10"
+        />
+        {placeholder && (
+          <span className="pointer-events-none absolute left-5 top-4 text-white/30 transition-all peer-focus:-translate-y-2 peer-focus:text-xs peer-focus:opacity-0 peer-valid:-translate-y-2 peer-valid:text-xs peer-valid:opacity-0">
+            {placeholder}
+          </span>
+        )}
+      </div>
     </label>
   );
 }
@@ -269,45 +317,48 @@ const categoryCards = [
     title: "Connect with us Online",
     body: "Stay connected on Facebook, Instagram, and YouTube for updates, events, and educational insights.",
     icon: GlobeIcon,
-    href: "#",
-    cta: "Follow @sklearnings",
+    href: site.socials.instagram,
+    cta: "Follow @the_sk_learnings",
   },
 ];
 
 function CategoryCards() {
   return (
-    <section className="bg-navy-900 text-parchment">
+    <section className="border-y border-white/10 bg-white/[0.02]">
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-        <p className="font-display text-xs uppercase tracking-[0.22em] text-gold-300">
-          More ways to reach us
-        </p>
-        <h2 className="mt-3 max-w-3xl font-display text-3xl font-semibold sm:text-4xl">
-          Pick the channel that fits — every one lands on a real person.
-        </h2>
+        <Reveal>
+          <p className="font-display text-xs uppercase tracking-[0.22em] text-cyan-300">
+            More ways to reach us
+          </p>
+          <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold text-white sm:text-4xl">
+            Pick the channel that fits — every one lands on a real person.
+          </h2>
+        </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {categoryCards.map((c, i) => {
             const Icon = c.icon;
             const accents = ["cyan", "violet", "sky", "emerald"] as const;
             return (
-              <a
-                key={c.title}
-                href={c.href}
-                className="lift glow-border group relative flex h-full flex-col rounded-3xl border border-parchment/10 bg-navy-800/70 p-7 backdrop-blur"
-              >
-                <PremiumIcon accent={accents[i]} size="md">
-                  <Icon />
-                </PremiumIcon>
-                <h3 className="mt-6 font-display text-xl font-semibold">
-                  {c.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-parchment/75">
-                  {c.body}
-                </p>
-                <p className="mt-auto pt-6 text-sm font-medium text-gold-300">
-                  {c.cta} →
-                </p>
-              </a>
+              <Reveal key={c.title} delay={i * 100}>
+                <a
+                  href={c.href}
+                  className="lift glow-border group relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl"
+                >
+                  <PremiumIcon accent={accents[i]} size="md">
+                    <Icon />
+                  </PremiumIcon>
+                  <h3 className="mt-8 font-display text-xl font-semibold text-white">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-parchment/70">
+                    {c.body}
+                  </p>
+                  <p className={`mt-auto pt-8 text-sm font-medium ${accents[i] === 'cyan' ? 'text-cyan-300' : accents[i] === 'violet' ? 'text-violet-300' : accents[i] === 'sky' ? 'text-sky-300' : 'text-emerald-300'}`}>
+                    {c.cta} →
+                  </p>
+                </a>
+              </Reveal>
             );
           })}
         </div>
@@ -318,25 +369,30 @@ function CategoryCards() {
 
 function ClosingCallout() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-10">
-      <p className="font-display text-xs uppercase tracking-[0.22em] text-gold-300">
-        We are here for you
-      </p>
-      <h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-semibold leading-tight text-parchment sm:text-5xl">
-        Reach out and start your educational odyssey with SK Learnings today.
-      </h2>
-      <p className="mx-auto mt-6 max-w-2xl text-base text-parchment/70">
-        Our commitment extends beyond the classroom. We are here to assist
-        you at every step of your educational journey — for any guidance,
-        information, or simply a conversation.
-      </p>
-      <Link
-        to="/contact"
-        className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold-400 px-7 py-4 text-base font-medium text-navy-950 transition hover:bg-gold-300"
-      >
-        Book a free consultation
-        <span aria-hidden>→</span>
-      </Link>
+    <section className="relative mx-auto max-w-5xl px-6 py-32 text-center lg:px-10">
+      <Reveal>
+        <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
+          <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[100px]" />
+          
+          <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
+            Reach out and start your <br className="hidden sm:block" /> educational odyssey today.
+          </h2>
+          <p className="relative mx-auto mt-6 max-w-2xl text-lg text-parchment/70">
+            Our commitment extends beyond the classroom. We are here to assist
+            you at every step of your educational journey.
+          </p>
+          <div className="relative mt-10 flex justify-center">
+            <Link
+              to="/contact"
+              className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)]"
+            >
+              Book a Free Consultation
+              <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
