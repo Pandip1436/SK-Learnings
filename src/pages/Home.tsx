@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { testimonials } from "../data/testimonials";
 import { videos } from "../data/site";
-import { keyFeatures, aboutPillars, examsList } from "../data/features";
+import { keyFeatures,  examsList } from "../data/features";
 import { Reveal } from "../components/Reveal";
 import { Counter } from "../components/Counter";
 import { Marquee } from "../components/Marquee";
