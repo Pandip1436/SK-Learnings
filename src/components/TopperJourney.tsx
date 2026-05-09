@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { topperRoadmap, type RoadmapStep } from "../data/roadmap";
 import { Reveal } from "./Reveal";
-import { PremiumIcon } from "./PremiumIcon";
 
 export function TopperJourney() {
   const [activeStep, setActiveStep] = useState<RoadmapStep>(topperRoadmap[2]); // Default to 'current'
