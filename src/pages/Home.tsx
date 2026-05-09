@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { testimonials } from "../data/testimonials";
 import { videos } from "../data/site";
-import { keyFeatures,  examsList } from "../data/features";
+import { keyFeatures, examsList } from "../data/features";
 import { Reveal } from "../components/Reveal";
 import { Counter } from "../components/Counter";
 import { Marquee } from "../components/Marquee";
 import { LiteYouTube } from "../components/LiteYouTube";
 import { PremiumIcon } from "../components/PremiumIcon";
 import { ThreeDBackground } from "../components/ThreeDBackground";
+import { DailyChallenge } from "../components/DailyChallenge";
+import { AnatomyExplorer } from "../components/AnatomyExplorer";
+import { TopperJourney } from "../components/TopperJourney";
+
 
 export function Home() {
   return (
@@ -19,10 +23,15 @@ export function Home() {
       <Hero />
       <ExamMarquee />
       <AboutCompany />
+      <AnatomyExplorer />
       <DualCards />
       <KeyFeatures />
       <ExamsGrid />
+      <TopperJourney />
+      <DailyChallenge />
+
       <CrackNEET />
+
       <StatsBar />
       <Testimonials />
       <ClosingCTA />
@@ -411,8 +420,8 @@ function FloatCard({
     accent === "cyan"
       ? "ring-cyan-400/30 shadow-[0_10px_40px_-12px_rgba(34,211,238,0.45)]"
       : accent === "violet"
-      ? "ring-violet-400/30 shadow-[0_10px_40px_-12px_rgba(167,139,250,0.45)]"
-      : "ring-sky-400/30 shadow-[0_10px_40px_-12px_rgba(56,189,248,0.45)]";
+        ? "ring-violet-400/30 shadow-[0_10px_40px_-12px_rgba(167,139,250,0.45)]"
+        : "ring-sky-400/30 shadow-[0_10px_40px_-12px_rgba(56,189,248,0.45)]";
 
   return (
     <div
@@ -449,8 +458,8 @@ function ProgressBar({
     accent === "cyan"
       ? "bg-linear-to-r from-cyan-400 to-violet-500 shadow-[0_0_10px_rgba(34,211,238,0.4)]"
       : accent === "sky"
-      ? "bg-linear-to-r from-sky-400 to-cyan-300 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
-      : "bg-linear-to-r from-emerald-400 to-cyan-300 shadow-[0_0_10px_rgba(52,211,153,0.4)]";
+        ? "bg-linear-to-r from-sky-400 to-cyan-300 shadow-[0_0_10px_rgba(56,189,248,0.4)]"
+        : "bg-linear-to-r from-emerald-400 to-cyan-300 shadow-[0_0_10px_rgba(52,211,153,0.4)]";
   return (
     <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10 border border-white/5">
       <div className={`h-full rounded-full ${fill}`} style={{ width: `${value}%` }} />
@@ -554,7 +563,7 @@ function AboutCompany() {
         <Reveal as="div" className="lg:col-span-6">
           <div className="glow-border relative overflow-hidden rounded-[2rem] border border-cyan-500/20 bg-[#0c1226]/80 p-2 backdrop-blur-xl">
             <div className="aspect-video overflow-hidden rounded-3xl">
-               <LiteYouTube videoId={videos.intro} title="How to crack NEET" className="h-full w-full" />
+              <LiteYouTube videoId={videos.intro} title="How to crack NEET" className="h-full w-full" />
             </div>
             <div className="p-5 sm:p-6">
               <p className="font-display text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
@@ -706,7 +715,7 @@ function ExamsGrid() {
             We coach for
           </p>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Every exam that defines <br className="hidden sm:block"/> the future.
+            Every exam that defines <br className="hidden sm:block" /> the future.
           </h2>
         </Reveal>
 
@@ -730,15 +739,15 @@ function CrackNEET() {
   return (
     <section className="relative isolate overflow-hidden z-10">
       <div className="absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-violet-600/10 blur-[120px]" />
-      
+
       <div className="mx-auto max-w-7xl px-6 py-32 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7">
             <Reveal>
               <div className="glow-border relative overflow-hidden rounded-[2rem] border border-cyan-500/20 bg-[#0c1226]/80 p-2 backdrop-blur-xl">
-                 <div className="aspect-video overflow-hidden rounded-3xl">
-                    <LiteYouTube videoId={videos.crack} title="Crack NEET" className="h-full w-full" />
-                 </div>
+                <div className="aspect-video overflow-hidden rounded-3xl">
+                  <LiteYouTube videoId={videos.crack} title="Crack NEET" className="h-full w-full" />
+                </div>
               </div>
             </Reveal>
 
@@ -765,7 +774,7 @@ function CrackNEET() {
                 The Outcome
               </p>
               <h2 className="mt-3 font-display text-4xl font-semibold leading-tight text-white sm:text-5xl">
-                Crack NEET with <br/> our <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-violet-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">Smart Program.</span>
+                Crack NEET with <br /> our <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-300 to-violet-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.3)]">Smart Program.</span>
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-parchment/70">
                 Our results speak for themselves. Through precise analytics, targeted mock tests, and uncompromising individual care, we consistently engineer top-tier rankings for our students.
@@ -839,7 +848,7 @@ function Testimonials() {
               <div className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-cyan-500/5 blur-[50px]" />
               <div className="flex gap-1 text-cyan-400 mb-6">
                 {[...Array(5)].map((_, j) => (
-                  <svg key={j} width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg key={j} width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
                 ))}
               </div>
               <p className="text-sm leading-relaxed text-parchment/80 relative">"{t.quote}"</p>
@@ -868,7 +877,7 @@ function ClosingCTA() {
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
           <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[100px]" />
-          
+
           <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
             Ready to experience the <br className="hidden sm:block" /> SK Learnings difference?
           </h2>
