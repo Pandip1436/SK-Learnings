@@ -35,6 +35,7 @@ export const videos = {
 export const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About us" },
+  { to: "/programs", label: "Programs" },
   { to: "/success-stories", label: "Success Stories" },
   { to: "/faq", label: "FAQ" },
   { to: "/blog", label: "Blog" },
