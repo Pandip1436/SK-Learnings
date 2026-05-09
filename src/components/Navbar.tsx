@@ -16,18 +16,18 @@ export function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${scrolled
-          ? "bg-[#07050f]/80 backdrop-blur-xl border-b border-white/10"
-          : "bg-transparent border-b border-transparent"
+        ? "bg-[#07050f]/80 backdrop-blur-xl border-b border-white/10"
+        : "bg-transparent border-b border-transparent"
         }`}
     >
       <div className="mx-auto flex max-w-7xl items-center px-6 py-4 lg:px-10">
         {/* Logo Side */}
-        <div className="flex-1 flex items-center justify-start">
+        <div className="flex-[2] md:flex-1 flex items-center justify-start">
           <Link to="/" className="flex items-center group">
             <img
               src="/logo.png"
               alt={site.name}
-              className="h-[42px] w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-[52px] sm:h-[60px] md:h-[46px] w-auto object-contain transition-transform group-hover:scale-105"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
                 const fallback = document.getElementById('logo-fallback');
@@ -35,10 +35,10 @@ export function Navbar() {
               }}
             />
             <div id="logo-fallback" className="hidden items-center gap-3">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-cyan-500 text-white font-display font-semibold shadow-[0_0_15px_rgba(34,211,238,0.5)]">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-cyan-500 text-white font-display font-semibold shadow-[0_0_15px_rgba(34,211,238,0.5)]">
                 SK
               </span>
-              <span className="hidden sm:block font-display text-lg font-semibold tracking-tight text-white">
+              <span className="hidden sm:block font-display text-xl font-semibold tracking-tight text-white">
                 {site.name}
               </span>
             </div>
