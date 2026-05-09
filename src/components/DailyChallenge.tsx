@@ -97,9 +97,13 @@ export function DailyChallenge() {
                     {currentChallenge.subject}
                   </p>
                 </div>
-                <div className="ml-auto flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-parchment/50">High-Yield NEET</span>
+                <div className="ml-auto flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+                  <span className="text-[10px] font-bold text-cyan-400">CHALLENGE #{challengeIndex + 1}</span>
+                  <div className="w-px h-3 bg-white/10" />
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400/80">Active Now</span>
+                  </div>
                 </div>
               </div>
 
