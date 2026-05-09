@@ -82,14 +82,14 @@ export function LiteYouTube({ videoId, title, className = "" }: Props) {
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className="inline-flex items-center gap-2 bg-[#121212]/90 hover:bg-[#282828] transition-colors border border-white/10 rounded-md px-3 py-1.5 shadow-lg"
+          className="inline-flex items-center gap-1.5 bg-[#121212]/90 hover:bg-[#282828] transition-colors border border-white/10 rounded-md px-2 py-1 sm:px-3 sm:py-1.5 shadow-lg"
         >
-          <span className="text-white text-[11px] font-semibold tracking-wide opacity-90 uppercase">Watch on</span>
+          <span className="hidden min-[400px]:inline text-white text-[10px] font-semibold tracking-wide opacity-90 uppercase">Watch on</span>
           <div className="flex items-center gap-1">
-            <svg width="18" height="13" viewBox="0 0 24 24" fill="#FF0000">
+            <svg width="16" height="12" viewBox="0 0 24 24" fill="#FF0000" className="sm:w-[18px] sm:h-[13px]">
               <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
             </svg>
-            <span className="text-white text-[14px] font-bold tracking-tighter">YouTube</span>
+            <span className="text-white text-[13px] sm:text-[14px] font-bold tracking-tighter">YouTube</span>
           </div>
         </a>
       </div>

@@ -549,18 +549,18 @@ function StatsBar() {
 
 function AboutCompany() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-32 lg:px-10 relative z-10">
-      <div className="grid gap-16 lg:grid-cols-12">
+    <section className="mx-auto max-w-7xl px-6 py-20 lg:py-32 lg:px-10 relative z-10">
+      <div className="grid gap-10 lg:gap-16 lg:grid-cols-12">
         <Reveal as="div" className="lg:col-span-6">
           <div className="glow-border relative overflow-hidden rounded-[2rem] border border-cyan-500/20 bg-[#0c1226]/80 p-2 backdrop-blur-xl">
             <div className="aspect-video overflow-hidden rounded-3xl">
                <LiteYouTube videoId={videos.intro} title="How to crack NEET" className="h-full w-full" />
             </div>
-            <div className="p-6">
-              <p className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
+            <div className="p-5 sm:p-6">
+              <p className="font-display text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
                 Watch our intro
               </p>
-              <p className="mt-2 font-display text-lg font-semibold text-white">
+              <p className="mt-2 font-display text-base sm:text-lg font-semibold text-white">
                 How to crack NEET with our Smart Analytics Program
               </p>
             </div>
@@ -571,14 +571,14 @@ function AboutCompany() {
           <p className="font-display text-xs font-semibold uppercase tracking-[0.22em] text-violet-300">
             About SK Learnings
           </p>
-          <p className="mt-5 text-lg leading-relaxed text-parchment/80">
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-parchment/80">
             At The SK Learnings, we are committed to empowering students with
             knowledge and skills that go beyond conventional education. With a
             distinguished legacy spanning a decade, we specialize in coaching
             students from <span className="text-cyan-300 font-semibold drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]">3rd to 12th grade</span>,
             focusing on deep analytics and AI-powered preparation.
           </p>
-          <p className="mt-6 border-l-2 border-violet-500/50 pl-5 font-display text-xl italic leading-snug text-violet-200">
+          <p className="mt-6 border-l-2 border-violet-500/50 pl-5 font-display text-lg sm:text-xl italic leading-snug text-violet-200">
             "Success is not just a goal — it's an engineered pathway."
           </p>
         </Reveal>
@@ -742,8 +742,8 @@ function CrackNEET() {
               </div>
             </Reveal>
 
-            <div className="mt-6 grid grid-cols-3 gap-4">
-              <Reveal delay={120}>
+            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
+              <Reveal delay={120} className="col-span-2 sm:col-span-1">
                 <div className="lift relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-[#07050f]">
                   <LiteYouTube videoId={videos.related} title="More videos" className="h-full w-full" />
                 </div>
