@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { navLinks, site } from "../data/site";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -12,6 +14,14 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (to: string, e: React.MouseEvent) => {
+    if (location.pathname === to) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setOpen(false);
+  };
 
   return (
     <header
@@ -23,7 +33,11 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center px-6 py-4 lg:px-10">
         {/* Logo Side */}
         <div className="flex-[2] md:flex-1 flex items-center justify-start">
-          <Link to="/" className="flex items-center group">
+          <Link
+            to="/"
+            onClick={(e) => handleNavClick("/", e)}
+            className="flex items-center group"
+          >
             <img
               src="/logo.png"
               alt={site.name}
@@ -51,6 +65,7 @@ export function Navbar() {
             <NavLink
               key={link.to}
               to={link.to}
+              onClick={(e) => handleNavClick(link.to, e)}
               end={link.to === "/"}
               className={({ isActive }) =>
                 `text-[13px] uppercase tracking-[0.12em] font-medium transition-all px-3.5 py-2 rounded-xl ${isActive
@@ -67,7 +82,7 @@ export function Navbar() {
         {/* CTA Side */}
         <div className="flex-1 flex items-center justify-end gap-4">
           <Link
-            to="/contact"
+            to="/contact#send-message"
             className="hidden md:inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-sky-500 px-6 py-2.5 text-[13px] font-semibold text-white shadow-[0_0_20px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 active:scale-95"
           >
             <span>Book a free demo</span>
@@ -116,8 +131,8 @@ export function Navbar() {
               <NavLink
                 key={link.to}
                 to={link.to}
+                onClick={(e) => handleNavClick(link.to, e)}
                 end={link.to === "/"}
-                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `py-3 text-base ${isActive ? "text-cyan-300 font-semibold" : "text-parchment/70"
                   }`
@@ -127,7 +142,7 @@ export function Navbar() {
               </NavLink>
             ))}
             <Link
-              to="/contact"
+              to="/contact#send-message"
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex items-center justify-center rounded-full bg-linear-to-r from-cyan-400 to-sky-500 px-5 py-3.5 text-sm font-semibold text-white shadow-[0_0_20px_-5px_rgba(34,211,238,0.5)]"
             >

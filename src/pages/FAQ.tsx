@@ -13,7 +13,7 @@ export function FAQ() {
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 -z-50 bg-linear-to-b from-[#020617] via-[#070321] to-[#0a0820]" />
       <div className="pointer-events-none absolute inset-0 -z-40 bg-grid-cyan opacity-[0.15] mask-fade-radial" />
-      
+
       {/* Glow Orbs */}
       <div aria-hidden className="pointer-events-none absolute right-0 top-1/4 -z-10 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/2 rounded-full bg-violet-600/20 blur-[120px]" />
 
@@ -127,9 +127,8 @@ function FAQRow({
         </div>
         <span
           aria-hidden
-          className={`mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all ${
-            open ? "rotate-45 border-cyan-400 bg-cyan-400 text-[#07050f] shadow-[0_0_15px_-3px_rgba(34,211,238,0.5)]" : "border-white/20 text-white group-hover:border-white/40"
-          }`}
+          className={`mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all ${open ? "rotate-45 border-cyan-400 bg-cyan-400 text-[#07050f] shadow-[0_0_15px_-3px_rgba(34,211,238,0.5)]" : "border-white/20 text-white group-hover:border-white/40"
+            }`}
         >
           <svg
             width="14"
@@ -146,9 +145,8 @@ function FAQRow({
         </span>
       </button>
       <div
-        className={`grid overflow-hidden px-6 transition-[grid-template-rows] duration-300 ease-out sm:px-8 ${
-          open ? "grid-rows-[1fr] pb-8 opacity-100" : "grid-rows-[0fr] opacity-0"
-        }`}
+        className={`grid overflow-hidden px-6 transition-[grid-template-rows] duration-300 ease-out sm:px-8 ${open ? "grid-rows-[1fr] pb-8 opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
       >
         <div className="min-h-0 sm:pl-12">
           {faq.answer && (
@@ -193,7 +191,7 @@ function ClosingCTA() {
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
           <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[100px]" />
-          
+
           <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
             Still have a question we <br className="hidden sm:block" /> haven't answered?
           </h2>
@@ -203,7 +201,7 @@ function ClosingCTA() {
           </p>
           <div className="relative mt-10 flex justify-center">
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)]"
             >
               Get in Touch

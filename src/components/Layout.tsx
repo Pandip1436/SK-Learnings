@@ -3,6 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { ScrollProgress } from "./ScrollProgress";
+import { NewsTicker } from "./NewsTicker";
+import { ScrollToTop } from "./ScrollToTop";
 import { AnimatedBackground } from "./AnimatedBackground";
 
 export function Layout() {
@@ -14,8 +16,10 @@ export function Layout() {
 
   return (
     <div className="relative min-h-screen flex flex-col">
+      <NewsTicker />
       <AnimatedBackground />
       <ScrollProgress />
+      <ScrollToTop />
       <Navbar />
       <main className="flex-1">
         <Outlet />

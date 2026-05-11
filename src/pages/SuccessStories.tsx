@@ -19,10 +19,10 @@ export function SuccessStories() {
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 -z-50 bg-linear-to-b from-[#020617] via-[#070321] to-[#0a0820]" />
       <div className="pointer-events-none absolute inset-0 -z-40 bg-grid-cyan opacity-[0.15] mask-fade-radial" />
-      
+
       {/* Glow Orbs */}
       <div aria-hidden className="pointer-events-none absolute left-0 top-0 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-600/20 blur-[120px]" />
-      
+
       <section className="mx-auto max-w-7xl px-6 pt-32 pb-12 lg:px-10 lg:pt-48">
         <Reveal>
           <p className="inline-flex items-center gap-2.5 rounded-full border border-cyan-400/30 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.32em] text-cyan-200 backdrop-blur">
@@ -58,11 +58,10 @@ export function SuccessStories() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-all ${
-                filter === f
+              className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-all ${filter === f
                   ? "border-cyan-400 bg-cyan-500/20 text-cyan-200 shadow-[0_0_20px_-5px_rgba(34,211,238,0.4)]"
                   : "border-white/10 bg-white/5 text-parchment/70 hover:border-white/30 hover:bg-white/10 hover:text-white"
-              }`}
+                }`}
             >
               {f}
             </button>
@@ -89,7 +88,7 @@ function StoryCard({ story }: { story: Story }) {
   return (
     <article className="lift glow-border group relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl">
       <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-cyan-500/10 blur-[50px] transition-opacity group-hover:bg-cyan-400/20" />
-      
+
       <header className="flex items-center gap-4">
         <div className="relative grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#07050f] font-display text-xl font-semibold text-cyan-300 ring-1 ring-cyan-500/30">
           <div className="absolute inset-0 rounded-full bg-cyan-400/10 animate-[spin_4s_linear_infinite]" style={{ borderTop: '2px solid rgba(34,211,238,0.5)' }} />
@@ -137,7 +136,7 @@ function ClosingCTA() {
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-violet-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
           <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/20 blur-[100px]" />
-          
+
           <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
             Want to be the next name <br className="hidden sm:block" /> on this page?
           </h2>
@@ -147,7 +146,7 @@ function ClosingCTA() {
           </p>
           <div className="relative mt-10 flex justify-center">
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-violet-500 via-sky-400 to-cyan-400 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(167,139,250,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(167,139,250,0.7)]"
             >
               Book a Free Consultation
@@ -166,9 +165,9 @@ function PerformanceBanners() {
       <Reveal>
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-[#0c1226]/80 p-2 sm:p-4 backdrop-blur-xl mb-12 shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-transform hover:scale-[1.01]">
           <div className="absolute -left-10 -top-10 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]" />
-          <img 
-            src="/performance-banner.jpg" 
-            alt="Our Individual Coaching Performance in NEET" 
+          <img
+            src="/performance-banner.jpg"
+            alt="Our Individual Coaching Performance in NEET"
             className="w-full h-auto rounded-2xl relative z-10"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';
@@ -181,13 +180,13 @@ function PerformanceBanners() {
           </div>
         </div>
       </Reveal>
-      
+
       <Reveal delay={150}>
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-[#0c1226]/80 p-2 sm:p-4 backdrop-blur-xl shadow-[0_0_30px_rgba(34,211,238,0.15)] transition-transform hover:scale-[1.01]">
           <div className="absolute -right-10 -bottom-10 h-64 w-64 rounded-full bg-violet-500/10 blur-[80px]" />
-          <img 
-            src="/neet-achievers.jpg" 
-            alt="NEET Achievers" 
+          <img
+            src="/neet-achievers.jpg"
+            alt="NEET Achievers"
             className="w-full h-auto rounded-2xl relative z-10"
             onError={(e) => {
               (e.target as HTMLImageElement).style.display = 'none';

@@ -9,7 +9,7 @@ export function About() {
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 -z-50 bg-linear-to-b from-[#020617] via-[#070321] to-[#0a0820]" />
       <div className="pointer-events-none absolute inset-0 -z-40 bg-grid-cyan opacity-[0.15] mask-fade-radial" />
-      
+
       <AboutHero />
       <IntelligenceBento />
       <MissionVision />
@@ -24,7 +24,7 @@ function AboutHero() {
       {/* Glow Orbs */}
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-cyan-600/20 blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
       <div aria-hidden className="pointer-events-none absolute left-1/4 top-1/3 -z-10 h-[400px] w-[400px] rounded-full bg-violet-600/20 blur-[100px] animate-drift-a" />
-      
+
       <div className="mx-auto max-w-7xl px-6 text-center lg:px-10">
         <Reveal>
           <p className="inline-flex items-center gap-2.5 rounded-full border border-cyan-400/30 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.32em] text-cyan-200 backdrop-blur">
@@ -67,11 +67,11 @@ function IntelligenceBento() {
         <Reveal as="div" delay={100} className="md:col-span-2 md:row-span-2">
           <div className="glow-border relative h-full overflow-hidden rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl sm:p-12 lift">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/20 blur-[80px]" />
-            
+
             <PremiumIcon accent="cyan">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
             </PremiumIcon>
-            
+
             <h3 className="mt-8 font-display text-3xl font-semibold text-white sm:text-4xl">Smart Analytics Matrix</h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-parchment/70">
               Our proprietary assessment system breaks down student performance into hyper-specific micro-topics. We don't just tell you that you're weak in Physics; we pinpoint exactly which step of an Optics equation is slowing you down.
@@ -98,7 +98,7 @@ function IntelligenceBento() {
         <Reveal as="div" delay={200} className="md:col-span-1 md:row-span-1">
           <div className="glow-border relative h-full overflow-hidden rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl lift">
             <PremiumIcon accent="violet">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
             </PremiumIcon>
             <h3 className="mt-6 font-display text-2xl font-semibold text-white">Precision Targeting</h3>
             <p className="mt-3 text-sm leading-relaxed text-parchment/70">
@@ -132,20 +132,20 @@ function MissionVision() {
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <div className="relative aspect-square max-w-md overflow-hidden rounded-full border border-white/10 bg-[#07050f] p-8 shadow-[0_0_60px_-15px_rgba(139,92,246,0.3)]">
-               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-900/40 via-transparent to-transparent" />
-               <div className="relative flex h-full w-full items-center justify-center rounded-full border border-dashed border-violet-500/30">
-                  <div className="flex h-[80%] w-[80%] items-center justify-center rounded-full border border-violet-400/20 bg-violet-950/50 backdrop-blur-md">
-                    <span className="font-display text-4xl font-semibold tracking-widest text-violet-200">SK.</span>
-                  </div>
-               </div>
-               
-               {/* Orbital elements */}
-               <div className="absolute left-1/2 top-1/2 h-[90%] w-[90%] -translate-x-1/2 -translate-y-1/2 animate-[spin_20s_linear_infinite] rounded-full border border-white/5">
-                 <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
-               </div>
-               <div className="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 animate-[spin_30s_linear_infinite_reverse] rounded-full border border-white/5">
-                 <div className="absolute bottom-1/4 right-0 h-3 w-3 rounded-full bg-violet-400 shadow-[0_0_15px_rgba(167,139,250,0.8)]" />
-               </div>
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-900/40 via-transparent to-transparent" />
+              <div className="relative flex h-full w-full items-center justify-center rounded-full border border-dashed border-violet-500/30">
+                <div className="flex h-[80%] w-[80%] items-center justify-center rounded-full border border-violet-400/20 bg-violet-950/50 backdrop-blur-md">
+                  <span className="font-display text-4xl font-semibold tracking-widest text-violet-200">SK.</span>
+                </div>
+              </div>
+
+              {/* Orbital elements */}
+              <div className="absolute left-1/2 top-1/2 h-[90%] w-[90%] -translate-x-1/2 -translate-y-1/2 animate-[spin_20s_linear_infinite] rounded-full border border-white/5">
+                <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rounded-full bg-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
+              </div>
+              <div className="absolute left-1/2 top-1/2 h-[110%] w-[110%] -translate-x-1/2 -translate-y-1/2 animate-[spin_30s_linear_infinite_reverse] rounded-full border border-white/5">
+                <div className="absolute bottom-1/4 right-0 h-3 w-3 rounded-full bg-violet-400 shadow-[0_0_15px_rgba(167,139,250,0.8)]" />
+              </div>
             </div>
           </Reveal>
 
@@ -190,7 +190,7 @@ function ClosingCTA() {
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
           <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[100px]" />
-          
+
           <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
             Ready to experience the <br className="hidden sm:block" /> SK Learnings difference?
           </h2>
@@ -199,7 +199,7 @@ function ClosingCTA() {
           </p>
           <div className="relative mt-10 flex justify-center">
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)]"
             >
               Book a Free Analytics Session

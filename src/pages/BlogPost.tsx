@@ -154,7 +154,7 @@ export function BlogPost() {
               Join 500+ serious aspirants who are redefining how they prepare for NEET and JEE.
             </p>
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="mt-8 rounded-full bg-cyan-500 px-8 py-3 font-semibold text-white shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] active:scale-95"
             >
               Book a Free Demo

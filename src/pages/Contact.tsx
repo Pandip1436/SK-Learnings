@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { site } from "../data/site";
 import { PremiumIcon } from "../components/PremiumIcon";
 import { Reveal } from "../components/Reveal";
@@ -7,12 +7,27 @@ import { Reveal } from "../components/Reveal";
 type Status = "idle" | "sending" | "sent";
 
 export function Contact() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      // Small delay to let the page render before scrolling
+      const timer = setTimeout(() => {
+        const el = document.getElementById(location.hash.slice(1));
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
+
   return (
     <div className="relative overflow-hidden selection:bg-cyan-500/30">
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 -z-50 bg-linear-to-b from-[#020617] via-[#070321] to-[#0a0820]" />
       <div className="pointer-events-none absolute inset-0 -z-40 bg-grid-cyan opacity-[0.15] mask-fade-radial" />
-      
+
       {/* Glow Orbs */}
       <div aria-hidden className="pointer-events-none absolute left-0 top-1/4 -z-10 h-[600px] w-[600px] -translate-x-1/3 -translate-y-1/2 rounded-full bg-cyan-600/20 blur-[120px]" />
 
@@ -72,11 +87,11 @@ function Map() {
 
 function DetailsAndForm() {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-20 lg:px-10">
+    <section id="send-message" className="mx-auto max-w-7xl px-6 pb-20 lg:px-10 scroll-mt-24">
       <div className="grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5 flex flex-col justify-center">
           <Reveal>
-            <DetailBlock 
+            <DetailBlock
               title="Institute Address"
               icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>}
             >
@@ -89,7 +104,7 @@ function DetailsAndForm() {
           </Reveal>
 
           <Reveal delay={100}>
-            <DetailBlock 
+            <DetailBlock
               title="Digital Address"
               icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
             >
@@ -103,7 +118,7 @@ function DetailsAndForm() {
           </Reveal>
 
           <Reveal delay={200}>
-            <DetailBlock 
+            <DetailBlock
               title="Phone"
               icon={<svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>}
             >
@@ -172,11 +187,11 @@ function ContactForm() {
     setStatus("sending");
 
     const formData = new FormData(e.currentTarget);
-    
+
     // Using Web3Forms for a zero-config backend. 
     // Get your free access key from https://web3forms.com/
     const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
-    formData.append("access_key", accessKey); 
+    formData.append("access_key", accessKey);
     formData.append("subject", `New Inquiry from ${formData.get("name")}`);
     formData.append("from_name", "SK Learnings Website");
 
@@ -207,7 +222,7 @@ function ContactForm() {
       className="glow-border relative overflow-hidden rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 backdrop-blur-xl sm:p-10 lift"
     >
       <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]" />
-      
+
       <p className="font-display text-xs uppercase tracking-[0.22em] text-violet-300 relative">
         Send us a message
       </p>
@@ -231,11 +246,10 @@ function ContactForm() {
         <button
           type="submit"
           disabled={status !== "idle"}
-          className={`group inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all active:scale-95 disabled:opacity-70 ${
-            status === "sent" 
-              ? "bg-emerald-500 shadow-emerald-500/20" 
-              : "bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 shadow-cyan-500/20 hover:scale-105 hover:shadow-cyan-500/40"
-          }`}
+          className={`group inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all active:scale-95 disabled:opacity-70 ${status === "sent"
+            ? "bg-emerald-500 shadow-emerald-500/20"
+            : "bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 shadow-cyan-500/20 hover:scale-105 hover:shadow-cyan-500/40"
+            }`}
         >
           {status === "idle" && (
             <>
@@ -427,7 +441,7 @@ function ClosingCallout() {
         <div className="glow-border relative overflow-hidden rounded-[2.5rem] border border-cyan-500/20 bg-linear-to-b from-[#0a1230] to-[#07050f] p-10 text-center backdrop-blur-xl sm:p-16">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 mix-blend-screen" />
           <div className="absolute left-1/2 top-0 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[100px]" />
-          
+
           <h2 className="relative font-display text-4xl font-semibold text-white sm:text-5xl">
             Reach out and start your <br className="hidden sm:block" /> educational odyssey today.
           </h2>
@@ -436,13 +450,14 @@ function ClosingCallout() {
             you at every step of your educational journey.
           </p>
           <div className="relative mt-10 flex justify-center">
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() => document.getElementById('send-message')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)]"
             >
               Book a Free Consultation
               <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
+            </button>
           </div>
         </div>
       </Reveal>

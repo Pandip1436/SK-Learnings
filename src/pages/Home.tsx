@@ -99,7 +99,7 @@ function Hero() {
           style={{ animationDelay: "0.3s" }}
         >
           <Link
-            to="/contact"
+            to="/contact#send-message"
             className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_10px_40px_-10px_rgba(56,189,248,0.6)] transition hover:scale-105 hover:shadow-[0_0_30px_-5px_rgba(56,189,248,0.8)]"
           >
             Start learning
@@ -114,7 +114,7 @@ function Hero() {
             Join NEET batch
           </Link>
           <Link
-            to="/contact"
+            to="/contact#send-message"
             className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-base font-medium text-parchment backdrop-blur transition hover:border-violet-300/60 hover:bg-white/10"
           >
             <PlayBadge />
@@ -603,7 +603,7 @@ function AboutCompany() {
           </p>
           <div className="relative mt-10 flex justify-center">
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="group inline-flex items-center gap-2 rounded-full border border-cyan-400/50 bg-cyan-500/10 px-8 py-3.5 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-500/20 hover:text-white"
             >
               Start Admission Process
@@ -886,7 +886,7 @@ function ClosingCTA() {
           </p>
           <div className="relative mt-10 flex justify-center">
             <Link
-              to="/contact"
+              to="/contact#send-message"
               className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 via-sky-400 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] transition hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.7)]"
             >
               Book a Free Analytics Session
