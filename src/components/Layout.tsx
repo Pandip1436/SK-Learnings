@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 import { ScrollProgress } from "./ScrollProgress";
 import { NewsTicker } from "./NewsTicker";
 import { ScrollToTop } from "./ScrollToTop";
+import { WhatsAppButton } from "./WhatsAppButton";
 import { AnimatedBackground } from "./AnimatedBackground";
 
 export function Layout() {
@@ -20,6 +21,7 @@ export function Layout() {
       <AnimatedBackground />
       <ScrollProgress />
       <ScrollToTop />
+      <WhatsAppButton />
       <Navbar />
       <main className="flex-1">
         <Outlet />

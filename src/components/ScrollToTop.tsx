@@ -27,8 +27,8 @@ export function ScrollToTop() {
     <button
       type="button"
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#0c1226]/80 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] backdrop-blur-xl transition-all duration-500 hover:scale-110 hover:border-cyan-500/50 hover:text-white active:scale-95 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0 pointer-events-none"
+      className={`fixed bottom-24 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#0c1226]/80 text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.2)] backdrop-blur-xl transition-all duration-500 hover:scale-110 hover:border-cyan-500/50 hover:text-white active:scale-95 ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0 pointer-events-none"
       }`}
       aria-label="Scroll to top"
     >
