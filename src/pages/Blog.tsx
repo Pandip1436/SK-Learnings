@@ -55,7 +55,7 @@ export function Blog() {
 function FeaturePost({ post }: { post: (typeof posts)[0] }) {
   return (
     <Link
-      to="#"
+      to={`/blog/${post.slug}`}
       className="lift glow-border group relative grid overflow-hidden rounded-[2rem] border border-white/10 bg-[#0c1226]/80 text-white lg:grid-cols-12 backdrop-blur-xl"
     >
       <div className="relative hidden aspect-4/3 lg:col-span-5 lg:block overflow-hidden">
@@ -109,7 +109,7 @@ function FeaturePost({ post }: { post: (typeof posts)[0] }) {
 function PostCard({ post }: { post: (typeof posts)[0] }) {
   return (
     <Link
-      to="#"
+      to={`/blog/${post.slug}`}
       className="lift glow-border group relative flex h-full flex-col rounded-3xl border border-white/10 bg-[#0c1226]/80 p-8 hover:bg-[#0c1226] backdrop-blur-xl"
     >
       <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-sky-500/10 blur-[50px] transition-opacity group-hover:bg-sky-400/20" />
